@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoBank - Online Banking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">NeoBank 🏦</div>
+        <div class="nav-links">
+            <button onclick="showSection('login-section')" id="nav-login">Login</button>
+            <button onclick="showSection('register-section')" id="nav-register">Register</button>
+            <button onclick="logout()" id="nav-logout" style="display:none;">Logout</button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- LOGIN SECTION -->
+        <section id="login-section" class="auth-box">
+            <h2>Welcome Back</h2>
+            <input type="text" id="login-username" placeholder="Username">
+            <input type="password" id="login-password" placeholder="Password">
+            <button onclick="login()">Login</button>
+            <p class="switch-text">Don't have an account? <a href="#" onclick="showSection('register-section')">Register</a></p>
+        </section>
+
+        <!-- REGISTER SECTION -->
+        <section id="register-section" class="auth-box hidden">
+            <h2>Open Account</h2>
+            <input type="text" id="reg-username" placeholder="Choose Username">
+            <input type="password" id="reg-password" placeholder="Choose Password">
+            <button onclick="register()">Create Savings Account</button>
+        </section>
+
+        <!-- USER DASHBOARD -->
+        <section id="user-dashboard" class="dashboard hidden">
+            <h2 id="welcome-msg">Welcome, User</h2>
+            <div class="card balance-card">
+                <h3>Savings Balance</h3>
+                <h1 id="user-balance">$0.00</h1>
+            </div>
+            <div class="actions">
+                <button onclick="simulateDeposit()">Simulate Deposit (+$500)</button>
+            </div>
+        </section>
+
+        <!-- ADMIN DASHBOARD -->
+        <section id="admin-dashboard" class="dashboard hidden">
+            <h2>Admin Control Panel</h2>
+            <p>Edit any user's balance instantly.</p>
+            
+            <div class="admin-controls">
+                <input type="text" id="admin-target-user" placeholder="Target Username">
+                <input type="number" id="admin-set-balance" placeholder="New Balance Amount">
+                <button onclick="adminUpdateBalance()">Update Balance</button>
+            </div>
+
+            <h3>All Users</h3>
+            <ul id="user-list"></ul>
+        </section>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
